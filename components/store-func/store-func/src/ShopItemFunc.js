@@ -1,14 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+import ItemModel from './models/ItemModel.js';
 
 function ShopItemFunc(props) {
-    const item = {
-        brand: 'Tiger of Sweden',
-        title: 'Leonard coat',
-        description: 'Minimalistic coat in cotton-blend',
-        descriptionFull: 'Men\'s minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.',
-        price: 399,
-        currency: '£'
-      }
+    const {item} = props;
+  
     return (
         <div className="main-content">
             <h2>{item.brand}</h2>
@@ -23,6 +19,10 @@ function ShopItemFunc(props) {
             </div>
         </div>
     )
+}
+
+ShopItemFunc.propTypes = {
+    item: PropTypes.instanceOf(ItemModel).isRequired,
 }
 
 export default ShopItemFunc;
