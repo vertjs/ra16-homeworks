@@ -10,5 +10,5 @@ function ListView(props) {
 export default ListView
 
 ListView.propTypes = {
-  cards: PropTypes.instanceOf(Object).isRequired
+  items: PropTypes.instanceOf(Object).isRequired
 }

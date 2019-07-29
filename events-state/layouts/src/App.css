@@ -45,12 +45,13 @@ h2 {
   position: relative;
   width: 300px;
   height: 300px;
-  margin: 5px 0px;
+  margin: 5px 10px;
   padding: 20px;
   box-shadow: 0 10px 10px rgba(0,0,0,0.5); /* Параметры тени */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: block; 
+  float: left;
+ 
+    
 }
 
 .shopcard img {
@@ -72,5 +73,13 @@ h2 {
   margin-top: 135px;
   display: flex; 
   justify-content: space-between;
+ 
+
 }
 
+.cardview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
