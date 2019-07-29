@@ -2,9 +2,11 @@ import React from 'react';
 import './App.css';
 import Calendar from './Calendar'
 
-const now = new Date(2017, 2, 8);
+
 
 function App() {
+  const now = new Date()
+
   return (
     <Calendar date={now} />
   );

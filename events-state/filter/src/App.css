@@ -1,33 +1,28 @@
-.App {
-  text-align: center;
+button {
+  display: inline; 
+  margin-right: 5px; 
+  border: 1px solid;
+  padding: 5px; 
+}
+.filter-selected {
+background-color: #555555;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.filter {
+background-color: #ffffff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.portfolioList {
+display: inline-block;
+margin: 15px 0;
+column-count: 3;
+column-gap: normal;
+
+}
+#root {
+text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+img {
+margin: 5px 0px;
 }
