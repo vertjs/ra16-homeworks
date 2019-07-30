@@ -1,4 +1,3 @@
-import React from 'react';
 
 export const filters = ["All", "Websites", "Flayers", "Business Cards"];
 

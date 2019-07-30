@@ -2,6 +2,7 @@ import React from 'react';
 import Toolbar from './Toolbar';
 import ProjectList from './ProjectList';
 import {filters, projects} from './date'
+import PropTypes from 'prop-types'
 
 class Portfolio extends React.Component {
     constructor(props) {
@@ -33,3 +34,8 @@ class Portfolio extends React.Component {
   }
 
   export default Portfolio
+
+  Portfolio.propTypes = {
+    projects: PropTypes.array.isRequired,
+    filters: PropTypes.array.isRequired
+  }
