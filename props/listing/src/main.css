@@ -61,10 +61,10 @@ html,body {
 /* Pagination */
 
 .page {
-font-size:0;
-position:relative;
-text-align:right;
-top:5px;
+  font-size:0;
+  position:relative;
+  text-align:right;
+  top:5px;
 }
 
 .page a {
