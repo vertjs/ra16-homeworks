@@ -1,0 +1,28 @@
+button {
+  display: inline; 
+  margin-right: 5px; 
+  border: 1px solid;
+  padding: 5px; 
+}
+.filter-selected {
+background-color: #555555;
+}
+
+.filter {
+background-color: #ffffff;
+}
+
+.portfolioList {
+display: inline-block;
+margin: 15px 0;
+column-count: 3;
+column-gap: normal;
+
+}
+#root {
+text-align: center;
+}
+
+img {
+margin: 5px 0px;
+}
