@@ -1,16 +1,17 @@
 import React from 'react';
 import HeadMenu from './HeadMenu';
-import HeadNews from './HeadNews';
+import nanoid from 'nanoid';
 import HeadLeftBlock from './HeadLeftBlock';
+import '../App.css';
 
-//const data = ['Сейчас в СМИ', 'В Германии', 'Рекомендуем']
+const data = ['Сейчас в СМИ', 'В Германии', 'Рекомендуем']
 
-export default function Header(props) {
+export default function Header() {
     return (
         <React.Fragment>
-            <HeadMenu/>
-            <HeadNews />
-            <HeadLeftBlock />
+            <HeadMenu key={nanoid()} list={data} />
+            
+            <HeadLeftBlock key={nanoid()} />
         </React.Fragment>
     )
 }

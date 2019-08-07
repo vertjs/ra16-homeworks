@@ -1,10 +1,13 @@
 import React from 'react';
 
 export default function HeadNews(props) {
-    console.log(props.children)
+    const {listNews} = props
+    console.log(listNews)
     return (
         <ul>
-            <li>HeadNews</li>
+{/* {listNews.map((item, id) => 
+                <li key={id}>{item}</li>)}*/}
+            <li>New1</li>
         </ul>
     )
 }
