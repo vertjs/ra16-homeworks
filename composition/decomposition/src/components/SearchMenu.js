@@ -1,11 +1,14 @@
 import React from 'react';
+import nanoid from 'nanoid';
 
-export default function SearchMenu(props) {
-    console.log(props.children)
+/**
+ * Компонент «меню поиска»: отфильтровать разделы поиска.
+ */
+
+export default function SearchMenu({filtres}) {
     return (
         <ul>
-            <li>SearchMenu</li>
-       
-        </ul>
+            {filtres.map(el => <li className='li' key={nanoid()}>{el}</li>)}
+        </ul>     
     )
 }
