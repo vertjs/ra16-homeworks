@@ -1,5 +1,4 @@
 import React from 'react';
-import nanoid from 'nanoid';
 
 /**
  * Компонент «меню поиска»: отфильтровать разделы поиска.
@@ -8,7 +7,7 @@ import nanoid from 'nanoid';
 export default function SearchMenu({filtres}) {
     return (
         <ul>
-            {filtres.map(el => <li className='li' key={nanoid()}>{el}</li>)}
+            {filtres.map((el, id) => <li className='li' key={id}>{el}</li>)}
         </ul>     
     )
 }
