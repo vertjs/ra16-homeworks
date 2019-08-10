@@ -1,7 +1,13 @@
 import React from 'react'; 
+import PropTypes from 'prop-types'
 
-export default function Img(props) {
+export default function Img({src, alt}) {
     return (
-        <img src="http://prodod.moscow/wp-content/uploads/2018/10/environment-2196690_640.jpg" className="card-img-top" alt="environment"/>
+        <img src={src} className="card-img-top" alt={alt}/>
     )
+}
+
+Img.propTypes = {
+    src: PropTypes.string,
+    alt: PropTypes.string
 }

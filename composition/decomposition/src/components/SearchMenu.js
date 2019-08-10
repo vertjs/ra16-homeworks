@@ -1,11 +1,13 @@
 import React from 'react';
 
-export default function SearchMenu(props) {
-    console.log(props.children)
+/**
+ * Компонент «меню поиска»: отфильтровать разделы поиска.
+ */
+
+export default function SearchMenu({filtres}) {
     return (
         <ul>
-            <li>SearchMenu</li>
-       
-        </ul>
+            {filtres.map((el, id) => <li className='li' key={id}>{el}</li>)}
+        </ul>     
     )
 }

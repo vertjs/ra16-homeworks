@@ -1,11 +1,8 @@
 import React from 'react';
 
-export default function Search(props) {
-    console.log(props.children)
+export default function Search() {
+ 
     return (
-        <ul>
-            <li>Search</li>
-       
-        </ul>
+        <input type='text' name='search' className='search'></input>
     )
 }

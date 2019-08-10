@@ -1,11 +1,12 @@
 import React from 'react';
+import advertising from './advertising.png'; 
 
-export default function AdvertisingSlider(props) {
-    console.log(props.children)
+/**
+ * Компонент «рекламный слайдер»
+ */
+
+export default function AdvertisingSlider() {
     return (
-        <ul>
-            <li>AdvertisingSlider</li>
-       
-        </ul>
+        <img src={advertising} alt='advertising' />
     )
 }

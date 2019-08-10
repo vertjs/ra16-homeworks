@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function Prompt(props) {
-    console.log(props.children)
+/**
+ * Компонент «подсказка»: комментарий к поиску.
+ */
+
+export default function Prompt(props) {   
     return (
-        <ul>
-            <li>Prompt</li>
-       
-        </ul>
+        <p className="prompt">Найдется всё. Например, фаза луны сегодня</p>
     )
 }
