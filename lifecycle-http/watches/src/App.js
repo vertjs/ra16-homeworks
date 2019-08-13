@@ -1,40 +1,55 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import './App.css';
 import Watches from './components/Watches'
+import WatchesModel from './components/WatchesModel'
+import nanoid from 'nanoid';
 
 
 class App extends React.Component {
   state = {
-    time: new Date().toLocaleTimeString(),
+    time: new Date(),
     name: '',
-    hour: ''
+    hour: '',
+    watches: []
   }
   componentDidMount() {
     this.loadActualTime();
   }
-
+  
   loadActualTime = () => {
     setInterval(() => {
-      this.setState({time: new Date().toLocaleTimeString()})
+      let newTime = new Date(+new Date() + this.state.hour*3600000 + 1000).toLocaleTimeString()
+      this.setState({time: newTime})
     }, 1000)
   }
 
   handleChange = ({target}) => {
-    console.log(target.name)
     let name = target.name
     this.setState({
       [name]: target.value
-     })
+    })
   }
 
   handleSubmit = evt => {
-    evt.preventDefault();
-    console.log(evt.type);
-    console.dir(evt.target); // представление объекта
+    evt.preventDefault(); 
+    const watches = new WatchesModel(this.state.name, this.state.hour, nanoid() )
+    this.setState( {
+      watches: [...this.state.watches, watches]
+    }) 
+  }
+
+  removeElement = () => {
+    console.log(`removeElement`)
+    
+    this.setState( (id)=> { 
+      
+      this.state.watches.filter( o =>  o.id !== id)
+    })
   }
 
   render() {
-    const {time, name, hour} = this.state;
+    const {name, hour, watches} = this.state;
+
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit}>
@@ -42,7 +57,10 @@ class App extends React.Component {
           <input type="number" name="hour" placeholder="Временная зона" value={hour} onChange={this.handleChange}/>
           <button type="submit">Добавить</button>
         </form>
-        <Watches time={time} name={name}/>
+
+        <div>
+          {watches.map((el, id) => <Watches hour={el.hour} name={el.name} id={id} removeElement={this.removeElement}/> )}
+        </div>
       </React.Fragment>
     )
   }

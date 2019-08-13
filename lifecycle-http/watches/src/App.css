@@ -9,6 +9,16 @@ input {
 }
 
 .watches {
-  border: 2px solid block;
+  border: 2px solid black;
+  width: 20vw;
+  margin: 3em;
+  display: flex;
+  flex-wrap: wrap; 
+  flex-direction: column;
 }
 
+.delete {
+  margin-top: 1em;
+  width: 20%;
+  color: red;
+}
