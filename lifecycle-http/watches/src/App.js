@@ -33,18 +33,9 @@ class App extends React.Component {
   handleSubmit = evt => {
     evt.preventDefault(); 
     const watches = new WatchesModel(this.state.name, this.state.hour, nanoid() )
-    this.setState( {
+    this.setState({
       watches: [...this.state.watches, watches]
     }) 
-  }
-
-  removeElement = () => {
-    console.log(`removeElement`)
-    
-    this.setState( (id)=> { 
-      
-      this.state.watches.filter( o =>  o.id !== id)
-    })
   }
 
   render() {
@@ -59,7 +50,8 @@ class App extends React.Component {
         </form>
 
         <div>
-          {watches.map((el, id) => <Watches hour={el.hour} name={el.name} id={id} removeElement={this.removeElement}/> )}
+          {watches.map((el, id) => 
+          <Watches hour={el.hour} name={el.name} key={id} />)}
         </div>
       </React.Fragment>
     )
