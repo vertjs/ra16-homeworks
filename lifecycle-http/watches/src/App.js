@@ -38,6 +38,10 @@ class App extends React.Component {
     }) 
   }
 
+  componentWillUnmount() {
+    clearInterval(this.loadActualTime);
+  }
+
   render() {
     const {name, hour, watches} = this.state;
 
