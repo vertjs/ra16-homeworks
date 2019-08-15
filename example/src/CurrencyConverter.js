@@ -20,7 +20,7 @@ export default class CurrencyConverter extends Component {
     }
 
     loadActualRate = () => {
-        fetch(process.env.REACT_APP_CURRENCY_URL)
+        fetch('http://localhost:7070/currencies')
             .then(response => response.json())
             .then(rates => {
                 const findUSD = rate => rate.code === 'RUR';
@@ -28,7 +28,7 @@ export default class CurrencyConverter extends Component {
                 this.setState({ rate })
             })
     }
-    
+
     render() {
         const { rubAmount, rate } = this.state;
         return (
@@ -47,7 +47,6 @@ export default class CurrencyConverter extends Component {
                 <div>
                     <button>Загрузить курс валют</button>
                 </div>
-                <p>{process.env.REACT_APP_CARRENCY_URL}</p>
             </div>
         );
     }
