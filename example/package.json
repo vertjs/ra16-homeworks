@@ -1,12 +1,8 @@
 {
-  "name": "example",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "forever": "^1.0.0",
-    "koa": "^2.7.0",
-    "koa-router": "^7.4.0",
-    "koa2-cors": "^2.0.6",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.0"
