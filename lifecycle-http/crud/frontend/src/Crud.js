@@ -60,7 +60,7 @@ export default class Crud extends Component {
               </div>
             </form>
             <div className="App">
-             { /*<Notes delNote={this.delNote} notes={this.state.notes} />*/}
+             { /*<Notes notes={this.state.notes} />*/}
             </div>
           </div>
         )
