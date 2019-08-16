@@ -1,10 +1,6 @@
 {
   "short_name": "React App",
   "name": "Create React App Sample",
-  "permissions": [
-    "storage",
-    "http://localhost:7070/currencies"
-  ],
   "icons": [
     {
       "src": "favicon.ico",

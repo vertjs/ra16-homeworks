@@ -20,10 +20,16 @@ export default class CurrencyConverter extends Component {
     }
 
     loadActualRate = () => {
-        fetch('http://localhost:7070/currencies')
+        // вы зачем в переменные окружения виндоус поставили REACT_APP_*? ))
+        // всё готово
+        // 1. Надо запустить сначала бэкенд (cd backend && npm start)
+        // 2. В .env добавить URL после чего перезапустить фронт
+        //fetch('http://localhost:7070/currencies')
+        console.log(process.env.REACT_APP_API_URL);
+        fetch(`${process.env.REACT_APP_API_URL}`)
             .then(response => response.json())
             .then(rates => {
-                const findUSD = rate => rate.code === 'RUR';
+                const findUSD = rate => rate.code === 'AZN';
                 const rate = rates.find(findUSD).value;
                 this.setState({ rate })
             })
