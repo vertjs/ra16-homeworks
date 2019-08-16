@@ -1,13 +1,12 @@
 import React from 'react';
 
 
-export default function Notes({ notes }) {
-  return notes.map(note => (
-    console.log(note)
+export default function Notes({ notes, handleDelete }) {
 
-  /*<div className='note-container'>
-    <div className='note-close'>X</div>
-    <div className='note'>{note.content}</div>
-  </div>*/
+  return notes.map((note) => (
+    <div className='note-container' key={note.id}>
+      <button className='note-close' onClick={() => handleDelete(note.id)}>⮿</button>
+      <div className='note'>{note.content}</div>
+    </div>
   ));
 }

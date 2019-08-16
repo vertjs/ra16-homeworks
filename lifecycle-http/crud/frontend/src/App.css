@@ -32,4 +32,10 @@
   text-align: right;
   padding: 1rem;
   cursor: pointer;
+  background: none;
+	color: inherit;
+  border: none;
+  outline: inherit;
+  font-size: 30pt;
 }
+
