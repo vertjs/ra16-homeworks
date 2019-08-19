@@ -1,14 +1,13 @@
 import React from 'react'
 
-export default function Watches({hour, name, id}) {
-    const time = new Date(+new Date() + hour*3600000).toLocaleTimeString();
-    const deleteElement = (event) => event.target.parentNode.remove()
-    return (
-        <div className="watches" key={id}>
-            <h2>{name}</h2>
-            <div>{time}</div>
-            <button className="delete" onClick={deleteElement} >del</button>  
+export default function Watches({watches, handleDelete}) {
+
+    return watches.map(el => (
+        <div className="watches" key={el.id}>
+            <h2>{el.name}</h2>
+            <div>{new Date(+new Date() + el.hour*3600000).toLocaleTimeString()}</div>
+            <button className="delete" onClick={() => handleDelete(el.id)} >del</button>  
         </div>
-    )
+    ));
 }
 

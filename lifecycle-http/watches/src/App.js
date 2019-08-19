@@ -12,14 +12,14 @@ class App extends React.Component {
     hour: '',
     watches: []
   }
-  componentDidMount() {
+  componentDidUpdate() {
     this.loadActualTime();
   }
   
   loadActualTime = () => {
     setInterval(() => {
       let newTime = new Date(+new Date() + this.state.hour*3600000 + 1000).toLocaleTimeString()
-      this.setState({time: newTime})
+      this.setState({time: newTime}) 
     }, 1000)
   }
 
@@ -31,10 +31,16 @@ class App extends React.Component {
   }
 
   handleSubmit = evt => {
-    evt.preventDefault(); 
-    const watches = new WatchesModel(this.state.name, this.state.hour, nanoid() )
+    evt.preventDefault();   
+    const watches = new WatchesModel(this.state.name, this.state.hour, this.state.time, nanoid())
     this.setState({
       watches: [...this.state.watches, watches]
+    }) 
+  }
+  
+  handleDelete = id => {
+    this.setState({
+      watches: this.state.watches.filter(item => item.id !== id)
     }) 
   }
 
@@ -53,10 +59,7 @@ class App extends React.Component {
           <button type="submit">Добавить</button>
         </form>
 
-        <div>
-          {watches.map((el, id) => 
-          <Watches hour={el.hour} name={el.name} key={id} />)}
-        </div>
+        <div><Watches watches={watches} handleDelete={this.handleDelete} /></div>
       </React.Fragment>
     )
   }
