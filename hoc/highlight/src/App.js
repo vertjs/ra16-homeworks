@@ -1,5 +1,37 @@
 import React, { useState } from 'react';
 
+
+const HeadComponent = (props) => {
+    {
+        switch (props.type) {
+            case 'video':
+                return (
+                    <ComponentForVideo {...props} />
+                );
+
+            case 'article':
+                return (
+                    <ComponentForArticle {...props} />
+                );
+        }
+    }
+}
+
+function withLogger(Component) {
+    return function(props, ...args) {
+        if(props.views > 1000) {
+           return <Popular>{Component.apply(this, [props, ...args])}</Popular>
+        } else if(props.views < 100) {
+            return <New>{Component.apply(this, [props, ...args])}</New>
+        } else {
+            return Component.apply(this, [props, ...args]);
+        }
+    }
+}
+
+const ComponentForVideo = withLogger(Video);
+const ComponentForArticle = withLogger(Article);
+
 function New(props) {
     return (
         <div className="wrap-item wrap-item-new">
@@ -30,26 +62,16 @@ function Article(props) {
 function Video(props) {
     return (
         <div className="item item-video">
-            <iframe src={props.url} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe src={props.url} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
             <p className="views">Просмотров: {props.views}</p>
         </div>
     )
 };
 
 function List(props) {
-    return props.list.map(item => {
-        switch (item.type) {
-            case 'video':
-                return (
-                    <Video {...item} />
-                );
-
-            case 'article':
-                return (
-                    <Article {...item} />
-                );
-        }
-    });
+    return props.list.map(item => 
+        <HeadComponent {...item}/>
+    );
 };
 
 export default function App() {
@@ -57,7 +79,7 @@ export default function App() {
         {
             type: 'video',
             url: 'https://www.youtube.com/embed/rN6nlNC9WQA?rel=0&amp;controls=0&amp;showinfo=0',
-            views: 50
+            views: 150
         },
         {
             type: 'video',
@@ -87,6 +109,6 @@ export default function App() {
     ]);
 
     return (
-        <List list={this.state.list} />
+        <List list={list} />
     );
 }
