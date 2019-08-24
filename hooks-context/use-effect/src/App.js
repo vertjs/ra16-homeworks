@@ -5,13 +5,16 @@ import Details from './Details';
 
 export default function App() {
   const [info, setInfo] = useState({id: null})
-  function handleChoise(id, name) {
-    setInfo({id, name})
+
+  function handleChoise(id) {
+    console.log(id)
+    setInfo({id})
   }
+  
   return (
     <div>
       <List handleChoise={handleChoise}/>
-      {info.id ? <Details info={info}/> : null }
+      {info.id ? <Details info={info.id}/> : null }
     </div>
   )
 }

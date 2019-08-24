@@ -7,3 +7,9 @@
   border-right: 1px solid lightgray;
   cursor: pointer;
 }
+
+a {
+  display:block;
+  color: #000 !important;
+  text-decoration: none; 
+}
