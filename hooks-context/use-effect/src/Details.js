@@ -12,7 +12,7 @@ export default function Details({info}) {
     return (
         <Fragment>
             <div>
-                <img src={data.avatar} alt="avatar"/>
+                <img src={info.avatar} alt="avatar"/>
             </div>
         </Fragment>
     )
