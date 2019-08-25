@@ -6,7 +6,7 @@ import usePolling from './usePolling';
 
 export default function App() {
   const [info, setInfo] = useState({id: null})
-  const [{data: id}] = usePolling(process.env.REACT_APP_NAMES_URL)
+  //const [{data: id}] = usePolling(process.env.REACT_APP_NAMES_URL)
 
   function handleChoise(id) {
     console.log(id)

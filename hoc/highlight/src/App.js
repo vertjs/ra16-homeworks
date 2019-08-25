@@ -19,12 +19,14 @@ const HeadComponent = (props) => {
 
 function withLogger(Component) {
     return function(props, ...args) {
+      const node = Component.apply(this, [props, ...args]);
+
         if(props.views > 1000) {
-           return <Popular>{Component.apply(this, [props, ...args])}</Popular>
+           return <Popular>{node}</Popular>
         } else if(props.views < 100) {
-            return <New>{Component.apply(this, [props, ...args])}</New>
+            return <New>{node}</New>
         } else {
-            return Component.apply(this, [props, ...args]);
+            return node;
         }
     }
 }
@@ -69,7 +71,7 @@ function Video(props) {
 };
 
 function List(props) {
-    return props.list.map(item => 
+    return props.list.map(item =>
         <HeadComponent {...item}/>
     );
 };
