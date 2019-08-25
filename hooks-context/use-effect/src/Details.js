@@ -3,11 +3,9 @@ import usePolling from './usePolling';
 
 export default function Details({info}) {
     console.log(info)
-    const [loading, setLoading] = useState(false)
-    const data = usePolling(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/`, info.id)
-    console.log(data)
-
-
+    //const [loading, setLoading] = useState(false)
+    
+  
 
     return (
         <Fragment>

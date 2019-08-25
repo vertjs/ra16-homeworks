@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from 'react';
+import React, {useState, useEffect, useRef, Fragment} from 'react';
 import List from './List';
 import './App.css';
 import Details from './Details';
@@ -6,17 +6,34 @@ import usePolling from './usePolling';
 
 export default function App() {
   const [info, setInfo] = useState({id: null})
-  //const [{data: id}] = usePolling(process.env.REACT_APP_NAMES_URL)
-
+  
   function handleChoise(id) {
-    console.log(id)
     setInfo({id})
   }
   
+  useEffect(() => {
+      if(info.id) {
+      console.log(info.id)
+       
+      console.log(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/${info.id.id}.json`);
+      fetch(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/${info.id.id}.json`, {mode: 'cors'})
+      .then(response => {
+        if(response.ok) {
+          response.json()
+          .then(data => setInfo(data)) //setData
+      }})
+      .catch(function(error) {
+        console.log(error);
+      })
+    }
+  }, [info]);
+
+
+
   return (
     <div>
       <List handleChoise={handleChoise}/>
-      {info.id ? <Details info={info.id}/> : null }
+      {info.id ? <Details info={info}/> : null }
     </div>
   )
 }

@@ -4,14 +4,16 @@ export default function List({handleChoise}) {
   const [name, setNames] = useState([])
   const [loading, setLoading] = useState(false)
   
-
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/users.json', {mode: 'cors'})
     .then(response => {
       setLoading(true)
       if(response.ok) {
         response.json()
-        .then(data => setNames(data)) //setNames
+        .then(data => {
+          setNames(data)
+         // console.log(data)
+        }) 
         .then(setLoading(false))     
     }})
     .catch(function(error) {
@@ -21,7 +23,6 @@ export default function List({handleChoise}) {
  
   return (
     <Fragment>
-      
       <ul>
         {name.map(o => 
         <li key={o.id} className="list-item" onClick={() => handleChoise(o)}> {/*() => getData(o.id)*/}
