@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import usePolling from './usePolling';
 
-export default function Details({info}) {
-    console.log(info)
+export default function Details({data}) {
+    console.log(data)
     //const [loading, setLoading] = useState(false)
     
   
@@ -10,7 +10,7 @@ export default function Details({info}) {
     return (
         <Fragment>
             <div>
-                <img src={info.avatar} alt="avatar"/>
+                <img src={data.avatar} alt="avatar"/>
             </div>
         </Fragment>
     )

@@ -6,11 +6,13 @@ import usePolling from './usePolling';
 
 export default function App() {
   const [info, setInfo] = useState({id: null})
-  
+  const [data, setData] = useState({id: null})
+
   function handleChoise(id) {
+    console.log(id)
     setInfo({id})
   }
-  
+
   useEffect(() => {
       if(info.id) {
       console.log(info.id)
@@ -20,20 +22,20 @@ export default function App() {
       .then(response => {
         if(response.ok) {
           response.json()
-          .then(data => setInfo(data)) //setData
+          .then(data => setData(prev => ({...prev, id: data}))) //
       }})
       .catch(function(error) {
         console.log(error);
       })
     }
-  }, [info]);
+  }, [info.id]);
 
 
 
   return (
     <div>
       <List handleChoise={handleChoise}/>
-      {info.id ? <Details info={info}/> : null }
+      {data.id !== null ? <Details data={data.id}/> : null }
     </div>
   )
 }
