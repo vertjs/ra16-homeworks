@@ -12,7 +12,6 @@ export default function List({handleChoise}) {
         response.json()
         .then(data => {
           setNames(data)
-         // console.log(data)
         }) 
         .then(setLoading(false))     
     }})
@@ -31,6 +30,5 @@ export default function List({handleChoise}) {
       </ul>
       {loading && <p>Loading...</p>}
     </Fragment>
-    
   )
 }
