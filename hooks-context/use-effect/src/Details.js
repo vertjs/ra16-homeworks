@@ -1,8 +1,6 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import usePolling from './usePolling';
+import React, { Fragment } from 'react';
 
 export default function Details({data}) {
-    //console.log(data)
     return (
         <Fragment>
             <div>
