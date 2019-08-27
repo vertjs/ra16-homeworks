@@ -3,13 +3,17 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const cors = require('koa2-cors');
 const koaBody = require('koa-body');
-
 const app = new Koa();
 
 app.use(cors());
-app.use(koaBody({json: true}));
+app.use(koaBody({
+    json: true,
+    text: true,
+    urlencoded: true,
+    multipart: true,
+}));
 
-let posts = [];
+let posts = [{"id": 1, "content":"Hello", "created": "Created"}];
 let nextId = 1;
 
 const router = new Router();
