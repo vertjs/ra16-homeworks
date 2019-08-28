@@ -10,7 +10,6 @@ function App() {
       <Route path="/">
         <HeadPage url={process.env.REACT_APP_DATA_URL}/>
       </Route>
-
     </Router>
   )
 }
