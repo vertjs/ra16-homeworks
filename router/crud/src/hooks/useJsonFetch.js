@@ -1,25 +1,15 @@
 import { useState, useEffect } from 'react';
 
-export default function useJsonFetch(url) {
-    const [data, setData] = useState([])
-    console.log(url)
-    console.log(data)
+export default function useJsonFetch(url, initial) {
+    const [data, setData] = useState(initial)
 
     useEffect(() => {
-        const fetchData = () => {
-                fetch(url)
-                .then(response => response.json())
-                .then(rates => {
-                    rates.map(el => {
-                       // setData(prev => ({...prev, el}))
-                       setData(el)
-                    })
-                })
-        }
-
-        fetchData()
-
-      }, [url])
+        fetch(url)
+            .then(response => response.json())
+            .then(rates => {
+                setData(rates);
+            });
+    }, [url]);
 
     return [data];
 }
