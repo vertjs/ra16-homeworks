@@ -26,7 +26,7 @@
   box-sizing: border-box;
 }
 
-button {
+.button-create {
   background-color: #4469ae;
   color: #ffffff;
   height: 22px;
@@ -51,7 +51,7 @@ button {
 
 }
 
-img {
+.avatar {
   border-radius: 50%;
   margin: 1px 5px;
   height: 45px;
@@ -88,4 +88,84 @@ h4 {
   min-width: 200px;
   margin: 0 5px;
   box-sizing: border-box;
+}
+
+.footer {
+  display: flex;
+  background-color: #fff;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 10px 10px;
+  margin: 0px 5px;
+  box-sizing: border-box;
+  width: 98%;
+  min-width: 200px;
+}
+
+.button-like, .button-commit {
+  background-color: #fff;
+  border-width: 0;
+  flex-grow: 1;
+}
+
+.like, .chat {
+  margin-top: 5px;
+  margin-right: 2px;
+  padding: 0;
+}
+
+.input {
+  border-radius: 50px 50px 50px 50px;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-width: 160px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 5px;
+}
+
+textarea {
+  border: none;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 80%;
+  overflow: hidden;
+  resize: none;
+  background-color: transparent;
+  padding: 5px;
+}
+
+textarea:active, textarea:focus {
+  outline: none;
+}
+
+.commit {
+  display: flex;
+  background-color: #fff;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  text-align: left;
+  justify-content: flex-start;
+  min-width: 200px;
+  box-sizing: border-box;
+  width: 98%;
+}
+
+form {
+  flex-grow: 1;
+  padding: 5px;
+  min-width: 180px;
+}
+
+.img-reaction > img {
+  margin: 2px;
 }
