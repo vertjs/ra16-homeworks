@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
 import useJsonFetch from './hooks/useJsonFetch';
 import Smewarik from './Smewarik.png'
 import like from './like.svg'
@@ -7,20 +8,33 @@ import smile from './smile.svg'
 import gif from './gif.svg'
 import photo from './photo.svg'
 import sticker from './sticker.svg'
+import CreatePost from './CreatePost'
 
-
-export default function HeadPage({url}) {
-    const [data] = useJsonFetch(url, [])
-    console.log(data)
-
+export default function HeadPage() {
+    const [data] = useJsonFetch(process.env.REACT_APP_DATA_URL, [])
+    const handleChange = (event) => {
+        if(event.target.scrollTop > 0){
+            event.target.style.height = event.target.scrollHeight + "px";
+        }
+        if(event.target.value.length > 45) {
+            event.target.setAttribute('cols', 84)
+        } else {
+            event.target.setAttribute('cols', 20)
+        }
+    }
     return (
+        <Router>
         <div>
             <h1>Главная</h1>
             <span>{data.map(o => 
                 <span key={o.id}>  
                     <div className="block">
                         <div className="create">
-                            <button className="button-create">Создать пост</button>
+                            <NavLink to="/posts/:new" className="button-create">  
+                                Создать пост
+                            </NavLink>
+                            {/*<Route exact path="/posts/new" component={CreatePost} />*/}
+
                         </div>
                         <div className="content">
                             <div className="head-content">
@@ -32,7 +46,7 @@ export default function HeadPage({url}) {
                             </div>
                         </div>
                         <div className="article">
-                            <p>{o.content}</p>
+                            <p>{o.content}</p> {/* Сообщение с сервера */}
                         </div>
                         <div>
                             <div className="footer">
@@ -50,7 +64,7 @@ export default function HeadPage({url}) {
                             <img className="avatar" src={Smewarik} alt="avatar" width={25}></img>
                             <form method="post" name="commit">  
                                 <div className="input">
-                                    <textarea name="text" type="text" placeholder="Напишите комментарий" row="1"/>
+                                    <textarea name="text" type="text" placeholder="Напишите комментарий" row="1" onChange={handleChange}/>
                                     <div className="img-reaction">
                                         <img src={smile} alt="smile" width={15}></img>
                                         <img src={photo} alt="addphoto" width={15}></img>
@@ -64,6 +78,10 @@ export default function HeadPage({url}) {
                 </span>)}
             </span>
         </div>
-        
+        <Route exact path="/posts/:new" 
+                                render={({match}) => {
+                                    return <CreatePost news={match.params.new}/>
+                                }}/> 
+        </Router>
     )
 }

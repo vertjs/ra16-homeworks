@@ -1,7 +1,8 @@
-let textarea = document.querySelector('textarea')
+/*let textarea = document.querySelector('textarea')
 let form = document.querySelector('form')
 
 textarea.addEventListener('input', (event) => {
+    console.log(event.target)
     if(event.target.scrollTop > 0){
         event.target.style.height = event.target.scrollHeight + "px";
     }
@@ -10,4 +11,4 @@ textarea.addEventListener('input', (event) => {
     } else {
         event.target.setAttribute('cols', 20)
     }
-  })
+  })*/
