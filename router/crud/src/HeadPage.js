@@ -12,7 +12,7 @@ import CreatePost from './CreatePost'
 
 export default function HeadPage({history, url}) {
     const [data] = useJsonFetch(url, [])
-  //  const [link, setLink] = useState(null);
+    const [link, setLink] = useState('/');
     console.log(history)
     const handleChange = (event) => {
         if(event.target.scrollTop > 0){
@@ -25,6 +25,9 @@ export default function HeadPage({history, url}) {
         }
     }
 
+    const handleClick = function() {
+        window.location.assign('/posts/:new')
+    } 
 
     return (
         <Router>
@@ -34,11 +37,9 @@ export default function HeadPage({history, url}) {
                 <span key={o.id}>  
                     <div className="block">
                         <div className="create">
-                            <NavLink exact to="/posts/:new" className="button-create">  
-                                Создать пост
-                            </NavLink>
-                            <Route exact path="/posts/:new" component={CreatePost}/>
-                          
+                        <button className="button-create" onClick={handleClick}> {/*перейти на новую страницу*/}
+                            Создать пост
+                        </button>
                         </div>
                         <div className="content">
                             <div className="head-content">

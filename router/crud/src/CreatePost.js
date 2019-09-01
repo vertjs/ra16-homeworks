@@ -6,11 +6,7 @@ import {withRouter} from 'react-router-dom';
     console.log(history)
     console.log(match.params.new)
     return (
-        <h1 {...() => {
-            history.push(`/posts/${match.params.new}`)
-            console.log(history)
-            }
-        }>
+        <h1>
             Hi!
         </h1>
     )
