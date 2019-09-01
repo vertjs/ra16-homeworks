@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
+import React, {useEffect, useState} from 'react';
+import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom'
 import useJsonFetch from './hooks/useJsonFetch';
 import Smewarik from './Smewarik.png'
 import like from './like.svg'
@@ -10,8 +10,10 @@ import photo from './photo.svg'
 import sticker from './sticker.svg'
 import CreatePost from './CreatePost'
 
-export default function HeadPage() {
-    const [data] = useJsonFetch(process.env.REACT_APP_DATA_URL, [])
+export default function HeadPage({history, url}) {
+    const [data] = useJsonFetch(url, [])
+  //  const [link, setLink] = useState(null);
+    console.log(history)
     const handleChange = (event) => {
         if(event.target.scrollTop > 0){
             event.target.style.height = event.target.scrollHeight + "px";
@@ -22,6 +24,8 @@ export default function HeadPage() {
             event.target.setAttribute('cols', 20)
         }
     }
+
+
     return (
         <Router>
         <div>
@@ -30,11 +34,11 @@ export default function HeadPage() {
                 <span key={o.id}>  
                     <div className="block">
                         <div className="create">
-                            <NavLink to="/posts/:new" className="button-create">  
+                            <NavLink exact to="/posts/:new" className="button-create">  
                                 Создать пост
                             </NavLink>
-                            {/*<Route exact path="/posts/new" component={CreatePost} />*/}
-
+                            <Route exact path="/posts/:new" component={CreatePost}/>
+                          
                         </div>
                         <div className="content">
                             <div className="head-content">
@@ -78,10 +82,6 @@ export default function HeadPage() {
                 </span>)}
             </span>
         </div>
-        <Route exact path="/posts/:new" 
-                                render={({match}) => {
-                                    return <CreatePost news={match.params.new}/>
-                                }}/> 
-        </Router>
+            </Router>
     )
 }
