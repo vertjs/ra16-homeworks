@@ -8,7 +8,7 @@
   text-align: center;
   border: 3px solid gray;
   width: 35vw;
-  min-width: 260px;
+  min-width: 578px;
   min-height: 130px;
   background-color: #e8eaed;
   box-sizing: border-box;
@@ -111,10 +111,16 @@ h4 {
   flex-grow: 1;
 }
 
-.like, .chat {
+.like, .chat, .exit {
   margin-top: 5px;
   margin-right: 2px;
   padding: 0;
+}
+
+.exit {
+  border: none;
+  background-color: transparent;
+  padding: 0 1vw;
 }
 
 .input {
@@ -143,7 +149,7 @@ textarea {
   padding: 5px;
 }
 
-textarea:active, textarea:focus {
+textarea:active, textarea:focus, button:active, button:focus {
   outline: none;
 }
 
@@ -155,9 +161,10 @@ textarea:active, textarea:focus {
   justify-content: space-between;
   text-align: left;
   justify-content: flex-start;
-  min-width: 200px;
+  margin: 0px 5px;
   box-sizing: border-box;
   width: 98%;
+  min-width: 200px;
 }
 
 form {
@@ -168,4 +175,40 @@ form {
 
 .img-reaction > img {
   margin: 2px;
+}
+
+.list-btns {
+  font-size:0;
+  display:inline;
+}
+
+.list-btns > li {
+  font-size:14px;
+  display:inline-block;
+  width: 20%;
+  margin:0;
+  padding:0;
+}
+
+.block-comment { 
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid gray;
+  width: 35vw;
+  min-width: 578px;
+  min-height: 130px;
+  background-color: #e8eaed;
+  box-sizing: border-box;
+}
+
+.tops {
+  align-items: center;
+  background-color: #ffffff;
+  margin: 10px 5px;
+  width: 98%;
+  height: 2vw;
+  min-height: 30px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 5px;
 }

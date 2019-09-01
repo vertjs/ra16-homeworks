@@ -10,10 +10,9 @@ import photo from './photo.svg'
 import sticker from './sticker.svg'
 import CreatePost from './CreatePost'
 
-export default function HeadPage({history, url}) {
+export default function HeadPage({url}) {
     const [data] = useJsonFetch(url, [])
-    const [link, setLink] = useState('/');
-    console.log(history)
+   
     const handleChange = (event) => {
         if(event.target.scrollTop > 0){
             event.target.style.height = event.target.scrollHeight + "px";
@@ -25,10 +24,6 @@ export default function HeadPage({history, url}) {
         }
     }
 
-    const handleClick = function() {
-        window.location.assign('/posts/:new')
-    } 
-
     return (
         <Router>
         <div>
@@ -37,7 +32,7 @@ export default function HeadPage({history, url}) {
                 <span key={o.id}>  
                     <div className="block">
                         <div className="create">
-                        <button className="button-create" onClick={handleClick}> {/*перейти на новую страницу*/}
+                        <button className="button-create" onClick={() => window.location.assign('/posts/:new')}> {/*перейти на новую страницу*/}
                             Создать пост
                         </button>
                         </div>
