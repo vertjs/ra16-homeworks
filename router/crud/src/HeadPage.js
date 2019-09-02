@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, NavLink, Route, Switch, Link } from 'react-router-dom'
 import useJsonFetch from './hooks/useJsonFetch';
+
 import Smewarik from './Smewarik.png'
 import like from './like.svg'
 import chat from './chat.svg'
@@ -10,8 +11,8 @@ import photo from './photo.svg'
 import sticker from './sticker.svg'
 import CreatePost from './CreatePost'
 
-export default function HeadPage({url}) {
-    const [data] = useJsonFetch(url, [])
+export default function HeadPage() {
+    const [data] = useJsonFetch(process.env.REACT_APP_DATA_URL, [])
    
     const handleChange = (event) => {
         if(event.target.scrollTop > 0){
@@ -28,6 +29,8 @@ export default function HeadPage({url}) {
         <Router>
         <div>
             <h1>Главная</h1>
+            <Link to='/create'>Добавить пост</Link>
+            
             <span>{data.map(o => 
                 <span key={o.id}>  
                     <div className="block">

@@ -1,19 +1,19 @@
 import React from 'react';
+import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import HeadPage from './HeadPage'
-import './App.css';
-import CreatePost from './CreatePost';
+import NotFoundPage from './NotFoundPage';
+import CreatePage from './CreatePage'; //?
+import CreatePost from './CreatePost'; 
 
 function App() {
   
   return (
     <Router>
-      <Switch>
-      <Route exact path="/">
-        <HeadPage url={process.env.REACT_APP_DATA_URL}/>
-      </Route>
+      <Route exact path="/" component={HeadPage} />
       <Route exact path="/posts/:new" component={CreatePost}/>
-      </Switch>
+      <Route path="/create" exact={true} component={CreatePage} /> 
+      <Route component={NotFoundPage} />
     </Router>
   )
 }
