@@ -8,7 +8,6 @@ import smile from './smile.svg'
 import gif from './gif.svg'
 import photo from './photo.svg'
 import sticker from './sticker.svg'
-import CreatePost from './CreatePost'
 
 
 export default function HeadPage() {

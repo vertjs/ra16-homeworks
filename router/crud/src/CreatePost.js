@@ -24,8 +24,8 @@ export default function CreatePost() {
         fetch(process.env.REACT_APP_DATA_URL, {
             method: 'Post',
             headers: {
-                'Content-Type': 'application/json',
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json'
+               // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: JSON.stringify(form)
         })
