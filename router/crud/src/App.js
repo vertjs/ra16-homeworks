@@ -10,10 +10,12 @@ function App() {
   
   return (
     <Router>
-      <Route exact path="/" component={HeadPage} />
-      <Route exact path="/posts/:new" component={CreatePost}/>
-      <Route path="/create" exact={true} component={CreatePage} /> 
-      <Route component={NotFoundPage} />
+      <Switch>
+        <Route path="/" exact component={HeadPage} />
+        <Route path="/create" exact component={CreatePage} /> 
+        <Route path="/posts/new" exact component={CreatePost}/>
+        <Route path="*" exact component={NotFoundPage} />
+      </Switch>
     </Router>
   )
 }

@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import { BrowserRouter as Router, NavLink, Route, Switch, Link } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom'
 import useJsonFetch from './hooks/useJsonFetch';
-
 import Smewarik from './Smewarik.png'
 import like from './like.svg'
 import chat from './chat.svg'
@@ -11,9 +10,10 @@ import photo from './photo.svg'
 import sticker from './sticker.svg'
 import CreatePost from './CreatePost'
 
+
 export default function HeadPage() {
     const [data] = useJsonFetch(process.env.REACT_APP_DATA_URL, [])
-   
+    
     const handleChange = (event) => {
         if(event.target.scrollTop > 0){
             event.target.style.height = event.target.scrollHeight + "px";
@@ -24,20 +24,17 @@ export default function HeadPage() {
             event.target.setAttribute('cols', 20)
         }
     }
-
+   
     return (
-        <Router>
-        <div>
+        <div>  
             <h1>Главная</h1>
-            <Link to='/create'>Добавить пост</Link>
-            
+            {/*<NavLink to='/posts/new'>Добавить пост</NavLink>*/}
+
             <span>{data.map(o => 
                 <span key={o.id}>  
                     <div className="block">
                         <div className="create">
-                        <button className="button-create" onClick={() => window.location.assign('/posts/:new')}> {/*перейти на новую страницу*/}
-                            Создать пост
-                        </button>
+                            <NavLink className="button-create" to='/posts/new' exact>Добавить пост</NavLink> {/*перейти на новую страницу*/}  
                         </div>
                         <div className="content">
                             <div className="head-content">
@@ -81,6 +78,5 @@ export default function HeadPage() {
                 </span>)}
             </span>
         </div>
-            </Router>
     )
 }

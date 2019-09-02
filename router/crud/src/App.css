@@ -31,6 +31,9 @@
   color: #ffffff;
   height: 22px;
   margin-right: 2px;
+  text-decoration: none;
+  border: 1px solid gray;
+  font: 12pt "Roboto";
 }
 
 .content {
