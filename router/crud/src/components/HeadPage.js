@@ -1,18 +1,19 @@
-import React from 'react';
+import React from 'react'
 import { NavLink } from 'react-router-dom'
-import useJsonFetch from './hooks/useJsonFetch';
-import Smewarik from './Smewarik.png'
-import like from './like.svg'
-import chat from './chat.svg'
-import smile from './smile.svg'
-import gif from './gif.svg'
-import photo from './photo.svg'
-import sticker from './sticker.svg'
-
+import useJsonFetch from '../hooks/useJsonFetch'
+import Smewarik from '../imgs/Smewarik.png'
+import like from '../imgs/like.svg'
+import chat from '../imgs/chat.svg'
+import smile from '../imgs/smile.svg'
+import gif from '../imgs/gif.svg'
+import photo from '../imgs/photo.svg'
+import sticker from '../imgs/sticker.svg'
+import nanoid from 'nanoid'
 
 export default function HeadPage() {
-    const [data] = useJsonFetch(process.env.REACT_APP_DATA_URL, [])
     
+    const [data] = useJsonFetch(process.env.REACT_APP_DATA_URL, [])
+    console.log(data)
     const handleChange = (event) => {
         if(event.target.scrollTop > 0){
             event.target.style.height = event.target.scrollHeight + "px";
@@ -23,15 +24,17 @@ export default function HeadPage() {
             event.target.setAttribute('cols', 20)
         }
     }
-   
+
     return (
         <div>  
             <h1>Главная</h1>
-            {/*<NavLink to='/posts/new'>Добавить пост</NavLink>*/}
 
             <span>{data.map(o => 
-                <span key={o.id}>  
+                <span key={nanoid()}>  
                     <div className="block">
+
+                        <NavLink className="id" to={'/posts/'+o.id} exact />
+
                         <div className="create">
                             <NavLink className="button-create" to='/posts/new' exact>Добавить пост</NavLink> {/*перейти на новую страницу*/}  
                         </div>

@@ -13,7 +13,7 @@ app.use(koaBody({
     multipart: true,
 }));
 
-let posts = [{"id": 1, "content":"Hello", "created": "Created"}];
+let posts = [];
 let nextId = 1;
 
 const router = new Router();

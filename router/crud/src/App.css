@@ -215,3 +215,12 @@ form {
   border-bottom: 1px solid gray;
   padding-bottom: 5px;
 }
+
+.id {
+  position: absolute;
+  z-index: 10;
+  width: 35vw;
+  min-width: 578px;
+  min-height: 170px;
+  margin: 50px 0;
+}

@@ -1,31 +1,29 @@
 import React,{ useState } from 'react'
 import {NavLink} from 'react-router-dom'
-import video from './video.svg'
-import pencilregular from './pencilregular.svg'
-import cinema from './cinema.svg'
-import ellipsis from './ellipsis.svg'
-import exit from './exit.svg'
-import Smewarik from './Smewarik.png'
-import nanoid from 'nanoid'
+import video from '../imgs/video.svg'
+import pencilregular from '../imgs/pencilregular.svg'
+import cinema from '../imgs/cinema.svg'
+import ellipsis from '../imgs/ellipsis.svg'
+import exit from '../imgs/exit.svg'
+import Smewarik from '../imgs/Smewarik.png'
+
 
 export default function CreatePost() {
     const [form, setForm] = useState({
         id: '',
         content: ''})
-
+    
     const handleChange = (e) => {
         const {value} = e.target
-        setForm(prev => ({...prev, id: nanoid(), content: value}))
+        setForm(prev => ({...prev, id: 0, content: value}))
     }
+
     const handleSubmit = (e) => {
-        //setForm(prev => ({...prev, id: nanoid()}))
         console.log(form)
-        
         fetch(process.env.REACT_APP_DATA_URL, {
             method: 'Post',
             headers: {
                 'Content-Type': 'application/json'
-               // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: JSON.stringify(form)
         })
@@ -54,7 +52,7 @@ export default function CreatePost() {
                         </li>
                     </ul>
                     <button className="exit">
-                        <img src={exit} alt="exit" width={15} className="like"/>
+                        <NavLink to='/' exact><img src={exit} alt="exit" width={15} className="like"/></NavLink>
                     </button>
                 </div>
                 <span className="article">
