@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "back",
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
@@ -9,13 +9,18 @@
     "watch": "forever -w server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "n",
   "license": "ISC",
   "dependencies": {
     "forever": "^1.0.0",
-    "koa": "^2.7.0",
+    "koa": "^2.8.1",
     "koa-body": "^4.1.0",
     "koa-router": "^7.4.0",
     "koa2-cors": "^2.0.6"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "n"
   }
 }
