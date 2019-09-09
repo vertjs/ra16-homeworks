@@ -1,17 +1,13 @@
 import React from 'react';
 import ServiceAdd from './components/ServiceAdd';
 import ServiceList from './components/ServiceList';
-import ServiceAddClassBased from './components/ServiceAddClassBased';
-import ServiceListClassBased from './components/ServiceListClassBased';
+import ServiceCancel from './components/ServiceCancel';
 
 function App() {
   return (
     <>
       <ServiceAdd />
       <ServiceList />
-      <hr />
-      <ServiceAddClassBased />
-      <ServiceListClassBased />
     </>
   );
 }
