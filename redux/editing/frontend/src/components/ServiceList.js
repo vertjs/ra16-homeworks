@@ -7,13 +7,10 @@ function ServiceList() {
   const dispatch = useDispatch();
 
   const handleEdit = (id, name, value) => {
-    console.log(items)
-    console.log(id, name, value)
     dispatch(editService(id, name, value)); // редактирование элемента списка
   }
 
   const handleRemove = id => { // удаление из списка
-    console.log(items)
     dispatch(removeService(id));
   }
   

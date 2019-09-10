@@ -1,7 +1,9 @@
-import {SAVE_SERVICE, REMOVE_SERVICE, CHANGE_SERVICE_FIELD, EDIT_SERVICE, CANCEL_SERVICE_EDIT} from '../actions/actionTypes'
+import {SAVE_SERVICE, CHANGE_SERVICE_FIELD, EDIT_SERVICE, CANCEL_SERVICE_EDIT} from '../actions/actionTypes'
 
 const initialState = {
-  id: ''
+  id: '',
+  name: '',
+  price: ''
 };
 
 export default function serviceAddReducer(state = initialState, action) {
@@ -17,7 +19,6 @@ export default function serviceAddReducer(state = initialState, action) {
         return { ...state, id, name, price };
       }
     case SAVE_SERVICE:
-      
       {
         return { ...initialState };
       }
