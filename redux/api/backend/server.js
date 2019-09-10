@@ -22,6 +22,7 @@ router.get('/api/services', async (ctx, next) => {
     ctx.response.body = services;
 });
 
+
 router.post('/api/services', async (ctx, next) => {
     const id = nextId++;
     services.push({...ctx.request.body, id});
