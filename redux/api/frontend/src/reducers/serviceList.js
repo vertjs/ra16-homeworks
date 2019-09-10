@@ -3,6 +3,7 @@ import {
   FETCH_SERVICES_FAILURE,
   FETCH_SERVICES_SUCCESS,
   REMOVE_SERVICE,
+  EDIT_SERVICE_FIELD
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -43,7 +44,13 @@ export default function serviceListReducer(state = initialState, action) {
         ...state,
         items: state.items.filter(o => o.id !== id)
       };
-      
+
+      case EDIT_SERVICE_FIELD:
+        const {i, name, price} = action.payload;
+        return {
+           ...state, i, name, price
+        }
+
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeServiceField, addService } from '../actions/actionCreators';
 
 function ServiceAdd() {
+  console.log(process.env.REACT_APP_DATA_URL)
   const {item, loading, error} = useSelector(state => state.serviceAdd);
   const dispatch = useDispatch();
 
@@ -11,7 +12,7 @@ function ServiceAdd() {
     dispatch(changeServiceField(name, value));
   };
 
-  const handleSubmit = evt => {
+  const handleSubmit = evt => { // добавление элемента в список
     evt.preventDefault();
     dispatch(addService());
   }
