@@ -1,20 +1,20 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { changeServiceField, addService } from '../actions/actionCreators';
+import { useSelector, useDispatch } from 'react-redux'
+import { changeServiceField, addService } from '../actions/actionCreators'
 
 function ServiceAdd() {
-  console.log(process.env.REACT_APP_DATA_URL)
-  const {item, loading, error} = useSelector(state => state.serviceAdd);
-  const dispatch = useDispatch();
+  const {item, loading, error} = useSelector(state => state.serviceAdd)
+  const dispatch = useDispatch()
 
   const handleChange = evt => {
-    const {name, value} = evt.target;
-    dispatch(changeServiceField(name, value));
+    const {name, value} = evt.target
+    console.log(name, value)
+    dispatch(changeServiceField(name, value))
   };
 
   const handleSubmit = evt => { // добавление элемента в список
-    evt.preventDefault();
-    dispatch(addService());
+    evt.preventDefault()
+    dispatch(addService())
   }
 
   return (

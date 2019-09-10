@@ -7,7 +7,8 @@ import {
   ADD_SERVICE_FAILURE,
   ADD_SERVICE_SUCCESS,
   REMOVE_SERVICE,
-  EDIT_SERVICE_FIELD
+  EDIT_SERVICE_FIELD, 
+  CHANGE_CURRENT_ELEMENT
 } from './actionTypes';
 
 export const fetchServicesRequest =() => ({ // запрос на сервер
@@ -59,6 +60,11 @@ export function editServiceField(i, name, price) {
   return {type: EDIT_SERVICE_FIELD, payload: {i, name, price}}
 }
 
+export function changeCurrentElement(name, value) {
+  return {type: CHANGE_CURRENT_ELEMENT, payload: {name, value}}
+}
+
+
 export const removeService = (id) => ({ // удаление элемента списка
   type: REMOVE_SERVICE,
   payload: {
@@ -83,6 +89,7 @@ export const fetchServices = () => async (dispatch) => { // получение �
 export const addService = () => async (dispatch, getState) => {  // добавление элемента в список
   dispatch(addServiceRequest());
   const {serviceAdd: {item: {name, price}}} = getState();
+  console.log(process.env.REACT_APP_API_URL)
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}`, {
       method: 'POST',

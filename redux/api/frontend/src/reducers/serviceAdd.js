@@ -3,6 +3,7 @@ import {
   ADD_SERVICE_REQUEST,
   ADD_SERVICE_FAILURE,
   ADD_SERVICE_SUCCESS,
+  CHANGE_CURRENT_ELEMENT
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -41,6 +42,19 @@ export default function serviceAddReducer(state = initialState, action) {
           [name]: value,
         }
       };
+
+      
+      case CHANGE_CURRENT_ELEMENT:
+        const { n, v } = action.payload;
+        const { i } = state;
+        return {
+          ...state,
+          i: {
+            ...i,
+            [n]: v,
+          }
+        };
+
       
     default:
       return state;
