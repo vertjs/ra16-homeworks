@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { editService, fetchServices, removeServicesUpload } from '../actions/actionCreators';
+import { fetchServices, removeServicesUpload } from '../actions/actionCreators';
 import { NavLink } from 'react-router-dom'
 
 function ServiceList(props) {

@@ -42,14 +42,6 @@ export default function serviceAddReducer(state = initialState, action) {
           [name]: value,
         }
       };
-
-      
-      case EDIT_SERVICE_FIELD:
-        const {n, p} = action.payload;
-        return {
-           ...state, item: {n, p}
-        }
-
       
     default:
       return state;

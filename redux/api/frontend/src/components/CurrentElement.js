@@ -1,7 +1,7 @@
 import React, {Fragment, useState, useEffect}  from 'react';
 import useJsonFetch from '../hooks/useJsonFetch'
 import { useSelector, useDispatch } from 'react-redux';
-import { changeServiceField, editService } from '../actions/actionCreators'
+import { changeServiceField, addService } from '../actions/actionCreators'
 import { NavLink } from 'react-router-dom'
 
 
@@ -27,14 +27,14 @@ function CurrentElement({match}) {
 
     const handleChange = evt => {
         const {name, value} = evt.target
-       // dispatch(changeServiceField(name, value))
+        dispatch(changeServiceField(name, value))
         setForm(prev => ({...prev, [name]: value}))
     };
 
     const handleSubmit = (evt) => {
-        console.log(form)
+        console.log(evt.target)
         evt.preventDefault()
-        dispatch(editService(form))
+        dispatch(addService())
     }
 
     return (
@@ -44,7 +44,7 @@ function CurrentElement({match}) {
       <form>
         <input name='name' onChange={handleChange} value={form.name}  />
         <input name='price' onChange={handleChange} value={form.price}  />
-    {/* <input name='content' onChange={handleChange} value={item.content} />*/}
+        {/* <input name='content' onChange={handleChange} value={item.content} />*/}
         <button type='submit' disabled={loading}>Cancel</button>
         <button type='submit' disabled={loading} onClick={handleSubmit}>
             <NavLink to='/' >Save</NavLink>

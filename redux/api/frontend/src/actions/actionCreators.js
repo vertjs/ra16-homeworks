@@ -7,7 +7,6 @@ import {
   ADD_SERVICE_FAILURE,
   ADD_SERVICE_SUCCESS,
   REMOVE_SERVICE,
-  EDIT_SERVICE_FIELD, 
   CHANGE_CURRENT_ELEMENT
 } from './actionTypes';
 
@@ -55,10 +54,6 @@ export const changeServiceField = (name, value) => ({ // изменение по
     value,
   },
 });
-
-export function editServiceField(form) {
-  return {type: EDIT_SERVICE_FIELD, payload: {form}}
-}
 
 export function changeCurrentElement(name, value) {
   return {type: CHANGE_CURRENT_ELEMENT, payload: {name, value}}
@@ -123,24 +118,3 @@ export const removeServicesUpload = (id) => async (dispatch) => { // удале�
     console.log(error.message);
   }
 };
-
-
-export const editService = (form) => async (dispatch) => {
-  dispatch(editServiceField(form));
-  console.log(form)
-  console.log(`${process.env.REACT_APP_API_URL+'/'}`+form.id)
-  try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}`, {
-      method: 'GET',
-      headers: {'Content-Type': 'application/json;charset=utf-8'}
-    })
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-   
-    dispatch(changeServiceField(form.name, form.price));
-  } catch (error) {
-    console.log(error.message);
-  }
-
-}
