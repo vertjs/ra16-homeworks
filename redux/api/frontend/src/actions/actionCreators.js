@@ -56,8 +56,8 @@ export const changeServiceField = (name, value) => ({ // изменение по
   },
 });
 
-export function editServiceField(i, name, price) {
-  return {type: EDIT_SERVICE_FIELD, payload: {i, name, price}}
+export function editServiceField(form) {
+  return {type: EDIT_SERVICE_FIELD, payload: {form}}
 }
 
 export function changeCurrentElement(name, value) {
@@ -125,20 +125,20 @@ export const removeServicesUpload = (id) => async (dispatch) => { // удале�
 };
 
 
-export const editService = (id, name, value) => async (dispatch) => {
-  dispatch(editServiceField(id, name, value));
-  console.log(id)
-  console.log(`${process.env.REACT_APP_API_URL+'/'}`+id)
+export const editService = (form) => async (dispatch) => {
+  dispatch(editServiceField(form));
+  console.log(form)
+  console.log(`${process.env.REACT_APP_API_URL+'/'}`+form.id)
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL+'/'}`+id, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}`, {
       method: 'GET',
       headers: {'Content-Type': 'application/json;charset=utf-8'}
     })
     if (!response.ok) {
       throw new Error(response.statusText);
     }
-    console.log(JSON.stringify(id, name, value))
-    dispatch(editServiceField(id, name, value));
+   
+    dispatch(changeServiceField(form.name, form.price));
   } catch (error) {
     console.log(error.message);
   }

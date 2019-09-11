@@ -15,10 +15,6 @@ function ServiceList(props) {
     dispatch(removeServicesUpload(id));
   }
 
-  const handleEdit = (id, name, value) => {
-    dispatch(editService(id, name, value)); // редактирование элемента списка
-  }
-
   if (loading) {
     return <p>Loading...</p>;
   }
