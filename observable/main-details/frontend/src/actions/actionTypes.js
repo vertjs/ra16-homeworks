@@ -1,0 +1,1 @@
+export const REFRESH_DETAILS = 'REFRESH_DETAILS';

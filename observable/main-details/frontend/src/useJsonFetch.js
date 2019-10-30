@@ -8,26 +8,32 @@ export default function useJsonFetch(url) {
     })
 
     useEffect(() => {
-        fetch(process.env.REACT_APP_SERVICES_URL)
+        fetch(url, {
+            headers: {
+                "Access-Control-Allow-Origin": "*"
+            }})
         .then(setData(prev => {
             return { ...prev, loading: true}
         }))
         .then(res => {
             if(res.ok) {
-               setData(prev => {
-                   console.log(res)
-                   return {...prev, data: res, loading: false}
-               })
+                res.json()
+                .then(items => {
+                    setData(prev => {
+                        return {...prev, data: items, loading: false}
+                    })})
             } else {
                 setData(prev => {
-                    return { ...prev, error: res.text, loading: false}
+                    return { ...prev, loading: false, error: res.text}
                 })
             }
         })
-        .then(setData(prev => {
-            return { ...prev, loading: false}
-        }))
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err) // res.text
+            setData(prev => {
+                return { ...prev, loading: false, error: true}
+            })
+        })
     }, [url])
 
     return [info];
