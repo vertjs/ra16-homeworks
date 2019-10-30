@@ -1,4 +1,4 @@
-import {REFRESH_DETAILS} from './actionTypes';
+import {REFRESH_DETAILS} from '../actions/actionTypes';
 
 const initialState = {
     data: {},

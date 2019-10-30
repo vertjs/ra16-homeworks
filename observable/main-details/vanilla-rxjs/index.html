@@ -15,20 +15,7 @@
         const { ajax } = rxjs.ajax;
         const { map, filter, debounceTime, switchMap } = rxjs.operators;
 
-        const inputEl = document.createElement('input');
-        document.body.appendChild(inputEl);
-        const inputElChange$ = fromEvent(inputEl, 'input')
-        inputElChange$.pipe(
-            map(o => o.target.value),
-            filter(o => o.trim() !== ''),
-            debounceTime(100),
-            map(o => new URLSearchParams({ q: o })),
-            switchMap(o => ajax.getJSON(`http://localhost:7070/api/search?${o}`)),
-        ).subscribe({
-            next: value => console.log('next', value),
-            error: error => console.error('error', error),
-            complete: () => console.info('complete'),
-        });
+
     </script>
 </body>
 

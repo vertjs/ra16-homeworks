@@ -1,17 +1,16 @@
 import { createStore, combineReducers, applyMiddleware, compose, } from 'redux';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
-//import skillsReducer from '../reducers/skills';
-import { changeSearchEpic, searchSkillsEpic } from '../epics';
+import detailsReducer from '../reducers/details';
+import { changeSearchEpic } from '../epics';
 
 const reducer = combineReducers({
-  skills: skillsReducer,
+  details: detailsReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const epic = combineEpics(
-  changeSearchEpic,
-  searchSkillsEpic,
+  changeSearchEpic
 );
 
 const epicMiddleware = createEpicMiddleware();
