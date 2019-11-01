@@ -29,7 +29,7 @@ export default function useJsonFetch(url) {
             }
         })
         .catch(err => {
-            console.log(err) // res.text
+            console.log(err) 
             setData(prev => {
                 return { ...prev, loading: false, error: true}
             })
