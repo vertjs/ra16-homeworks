@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export default function useJsonFetch(url) {
     const [info, setData] = useState({
-        data: [],
+        items: [],
         loading: false,
         error: null,
     })
@@ -18,9 +18,9 @@ export default function useJsonFetch(url) {
         .then(res => {
             if(res.ok) {
                 res.json()
-                .then(items => {
+                .then(i => {
                     setData(prev => {
-                        return {...prev, data: items, loading: false}
+                        return {...prev, items: i, loading: false}
                     })})
             } else {
                 setData(prev => {

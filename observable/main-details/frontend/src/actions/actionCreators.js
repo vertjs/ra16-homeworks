@@ -1,8 +1,13 @@
 import {
   REFRESH_DETAILS,
-  SEARCH_DATA_REQUEST,
+  SEARCH_DETAILS_REQUEST,
   SEARCH_DETAILS_SUCCESS,
-  SEARCH_DETAILS_FAILURE
+  SEARCH_DETAILS_FAILURE,
+
+  REFRESH_ITEMS,
+  SEARCH_ITEMS_REQUEST,
+  SEARCH_ITEMS_SUCCESS,
+  SEARCH_ITEMS_FAILURE
 } from './actionTypes';
 
 export const refreshDetailsRequest = search => ({
@@ -10,8 +15,8 @@ export const refreshDetailsRequest = search => ({
   payload: {search},
 });
  
-export const searchDataRequest = search => ({
-  type: SEARCH_DATA_REQUEST,
+export const searchDetailsRequest = search => ({
+  type: SEARCH_DETAILS_REQUEST,
   payload: {search},
 });
 
@@ -22,5 +27,26 @@ export const searchDetailsSuccess = data => ({
 
 export const searchDetailsFailure = error => ({
   type: SEARCH_DETAILS_FAILURE,
+  payload: {error},
+});
+/*******************/
+
+export const refreshItemsRequest = items => ({
+  type: REFRESH_ITEMS,
+  payload: {items},
+});
+ 
+export const searchItemsRequest = search => ({
+  type: SEARCH_ITEMS_REQUEST,
+  payload: {search},
+});
+
+export const searchItemsSuccess = items => ({
+  type: SEARCH_ITEMS_SUCCESS,
+  payload: {items},
+});
+
+export const searchItemsFailure = error => ({
+  type: SEARCH_ITEMS_FAILURE,
   payload: {error},
 });

@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose, } from 'redux';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import detailsReducer from '../reducers/details';
-import { refreshDetailsEpic, searchDataEpic } from '../epics';
+import { refreshDetailsEpic, searchDataEpic, refreshItemsEpic } from '../epics';
 
 const reducer = combineReducers({
   details: detailsReducer,
@@ -9,9 +9,14 @@ const reducer = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const epic = combineEpics(
+const epic1 = combineEpics(
   refreshDetailsEpic,
-  searchDataEpic,
+  searchDataEpic
+);
+
+const epic2 = combineEpics(
+  
+  refreshItemsEpic
 );
 
 const epicMiddleware = createEpicMiddleware();
@@ -21,5 +26,6 @@ const store = createStore(reducer, composeEnhancers(
 ));
 
 //console.log(reducer.details)
-epicMiddleware.run(epic);
+epicMiddleware.run(epic1);
+epicMiddleware.run(epic2);
 export default store;
