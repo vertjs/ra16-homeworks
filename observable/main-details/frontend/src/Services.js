@@ -1,28 +1,21 @@
-import React, { useState, useEffect, Fragment }  from 'react'
+import React, { useEffect }  from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { refreshDetailsRequest, refreshItemsRequest } from './actions/actionCreators'
-import useJsonFetch from './useJsonFetch'
+
 
 export default function Services() {
-   // let [{items, loading, error}] = useJsonFetch(process.env.REACT_APP_SERVICES_URL) // загрузка данных с сервера
     const dispatch = useDispatch()
 
     const { items, loading, error } = useSelector(state => {
-        console.log(state.details)
         return state.details;
-     })
-
-    if(!items) {
-        dispatch(refreshItemsRequest())
-    }
+    })
 
     useEffect(() => {
-        console.log(items)
-       /* if(!items) {
+        if(items.length === 0) {
             dispatch(refreshItemsRequest())
-        }*/
-    }, [items])
+        }
+    }, [items, dispatch])
 
     const handleToRef = (id) => {
         dispatch(refreshDetailsRequest(id))
@@ -30,21 +23,20 @@ export default function Services() {
 
     const handleRefresh = () => { // обновление страницы при ошибке
         dispatch(refreshItemsRequest())
-
         console.log(items)
     }
 
     return (
-        <Fragment>
+        <div className="card" style={{"width": "30rem"}}>
            {items && items.map((el, i) => (
-               <ul key={i}>
-                   <li key={el.id} onClick={() => handleToRef(el.id)}>
-                        <NavLink to={el.id + '/details'} exact>{el.name}</NavLink>
-                   </li>
-               </ul>
+                <ul key={i} className="list-group list-group-flush">
+                    <li key={el.id} onClick={() => handleToRef(el.id)}>
+                        <NavLink to={el.id + '/details'} exact className="list-group-item">{el.name}</NavLink>
+                    </li>
+                </ul>
             ))}
             {loading  && (
-                <h2>Loading...</h2>
+                <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
             )}
             {error && (
                 <div>
@@ -52,6 +44,6 @@ export default function Services() {
                     <button onClick={handleRefresh}>Повторить запрос</button>
                 </div>
             )}
-        </Fragment>
+        </div>
     )
 }

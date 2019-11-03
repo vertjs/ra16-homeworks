@@ -6,7 +6,7 @@ import {
 
     REFRESH_ITEMS,
     SEARCH_ITEMS_REQUEST,
- //   SEARCH_ITEMS_SUCCESS,
+    SEARCH_ITEMS_SUCCESS,
  //   SEARCH_ITEMS_FAILURE
 } from '../actions/actionTypes';
 
@@ -49,11 +49,9 @@ export default function detailsReducer(state = initialState, action) {
                     error
                 };
         case REFRESH_ITEMS:
-            const {items} = action.payload;
             return {
                 ...state,
-                loading: false,
-                items
+                loading: true
             };
         case SEARCH_ITEMS_REQUEST:
             return {
@@ -61,7 +59,7 @@ export default function detailsReducer(state = initialState, action) {
                 loading: true,
                 error: null
             };
-      /*  case SEARCH_ITEMS_SUCCESS:
+        case SEARCH_ITEMS_SUCCESS:
             const {items} = action.payload;
             return {
                 ...state,
@@ -69,7 +67,7 @@ export default function detailsReducer(state = initialState, action) {
                 loading: false,
                 error: null
             };
-        case SEARCH_ITEMS_FAILURE:
+       /* case SEARCH_ITEMS_FAILURE:
                 const {error} = action.payload;
                 return {
                     ...state,

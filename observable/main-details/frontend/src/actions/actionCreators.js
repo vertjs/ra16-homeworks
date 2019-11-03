@@ -31,9 +31,8 @@ export const searchDetailsFailure = error => ({
 });
 /*******************/
 
-export const refreshItemsRequest = items => ({
-  type: REFRESH_ITEMS,
-  payload: {items},
+export const refreshItemsRequest = () => ({
+  type: REFRESH_ITEMS
 });
  
 export const searchItemsRequest = search => ({

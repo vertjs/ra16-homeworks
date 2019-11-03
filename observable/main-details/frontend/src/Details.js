@@ -1,44 +1,42 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { refreshDetailsRequest, searchDetailsFailure } from './actions/actionCreators';
 
 export default function Details({match}) {
+    const {id} = match.params
     const { data, loading, error } = useSelector(state => {
-       // console.log(state.details)
         return state.details;
     })
     const dispatch = useDispatch()
 
     useEffect(() => {
         if(Object.keys(data).length === 0) {
-            dispatch(searchDetailsFailure('error'))
+            dispatch(refreshDetailsRequest(id))
         }
     }, [data, dispatch])
 
     const handleRefresh = () => { // обновление страницы при ошибке
-        let {id} = match.params
-        console.log(id)
         dispatch(refreshDetailsRequest(id))
     }
 
     return (
-        <Fragment>
+        <div className="card" style={{"width": "40rem"}}>
             {Object.keys(data).length !== 0 && (
-                <Fragment>
-                    <h2>{data.name}</h2>
+                <div className="card-body">
+                    <h2 className="card-title">{data.name}</h2>
                     <p></p>
-                    <p>{data.content} - {data.price} руб.</p>
-                </Fragment>
+                    <p className="card-text">{data.content} - {data.price} руб.</p>
+                </div>
             )}
             {loading && (
-                <h2>Loading...</h2>
+               <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
             )}
-            {error && ( /*Object.keys(data).length === 0 || */
+            {error && ( 
                 <div>
                     <p>Произошла ошибка!</p>
                     <button onClick={handleRefresh}>Повторить запрос</button>
                 </div>
             )}
-        </Fragment>
+        </div>
     )
 }

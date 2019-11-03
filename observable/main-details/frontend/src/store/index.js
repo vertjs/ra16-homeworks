@@ -15,7 +15,6 @@ const epic1 = combineEpics(
 );
 
 const epic2 = combineEpics(
-  
   refreshItemsEpic
 );
 

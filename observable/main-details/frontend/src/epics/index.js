@@ -2,7 +2,7 @@ import { ofType } from 'redux-observable';
 import { ajax } from 'rxjs/ajax';
 import { map, tap, retry, filter, debounceTime, switchMap, catchError } from 'rxjs/operators';
 import { REFRESH_DETAILS, SEARCH_DETAILS_REQUEST, REFRESH_ITEMS } from '../actions/actionTypes'
-import { searchDetailsRequest, searchDetailsSuccess, searchDetailsFailure, refreshItemsRequest } from '../actions/actionCreators'
+import { searchDetailsRequest, searchDetailsSuccess, searchDetailsFailure, searchItemsSuccess, searchItemsRequest } from '../actions/actionCreators'
 import { of } from 'rxjs';
 
 export const refreshDetailsEpic = action$ => action$.pipe(
@@ -21,27 +21,24 @@ export const searchDataEpic = action$ => action$.pipe(
         retry(3),
         map(o => {
             console.log('from map', o)
-            return searchDetailsSuccess(o)
+            return searchDetailsSuccess(o);
         }),
-        tap(o => console.log(o)),
-        catchError(e => {
-            console.log('from error', e)
-            of(searchDetailsFailure(e))
+        catchError(err => {
+            console.log('error in source. Details: ' + err)
+            return of(searchDetailsFailure(err));
         })
     )),
 )
 
-/* */
+/* обновление главной страницы при ошибке*/
 
 export const refreshItemsEpic = action$ => action$.pipe(
-    ofType(REFRESH_ITEMS ),
-    map(o => o.payload.items),
-    tap(o => console.log(o)),
+    ofType(REFRESH_ITEMS),
     switchMap(o => ajax.getJSON(`${process.env.REACT_APP_SERVICES_URL}`).pipe(
         retry(3),
         map(o => {
             console.log('from map', o)
-            return refreshItemsRequest(o)
+            return searchItemsSuccess(o)
         }),
         tap(o => console.log(o)),
         catchError(e => {
